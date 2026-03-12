@@ -1,0 +1,111 @@
+[gd_scene load_steps=18 format=3 uid="uid://cy5j6xta36750"]
+
+[ext_resource type="Script" uid="uid://d2tkc7wt0qjrg" path="res://Scenes/ceiling.gd" id="1_gsrwd"]
+[ext_resource type="Texture2D" uid="uid://ca5ntlufc2xmo" path="res://icon.svg" id="1_turhf"]
+[ext_resource type="Texture2D" uid="uid://bsk5dp3fvaec2" path="res://Assets/Walking/Timeline 1_0000.png" id="3_e8dqv"]
+[ext_resource type="Texture2D" uid="uid://cbnknpys2ko54" path="res://Assets/Walking/Timeline 1_0003.png" id="6_ml02p"]
+[ext_resource type="Texture2D" uid="uid://jesdba57ejgx" path="res://Assets/Walking/Timeline 1_0006.png" id="9_f1r6a"]
+[ext_resource type="Texture2D" uid="uid://nhfxn1upsr7o" path="res://Assets/Walking/Timeline 1_0007.png" id="10_dmswx"]
+[ext_resource type="Texture2D" uid="uid://bl2gj52856h1d" path="res://Assets/Walking/Timeline 1_0009.png" id="12_m28f6"]
+[ext_resource type="Texture2D" uid="uid://81bdt0nql4w3" path="res://Assets/Walking/Timeline 1_0011.png" id="14_m3ayp"]
+[ext_resource type="Texture2D" uid="uid://8gx2833ebopt" path="res://Assets/Walking/Timeline 1_0014.png" id="17_rnuqh"]
+[ext_resource type="Texture2D" uid="uid://c3twty6fddmvv" path="res://Assets/Walking/Timeline 1_0017.png" id="20_tdf2h"]
+[ext_resource type="Texture2D" uid="uid://xns5ogt2hyw7" path="res://Assets/Walking/Timeline 1_0020.png" id="23_00h63"]
+[ext_resource type="Texture2D" uid="uid://ngkl7hgrghaf" path="res://Assets/Walking/Timeline 1_0023.png" id="26_qruva"]
+[ext_resource type="Texture2D" uid="uid://c7wmvd7ta2r87" path="res://Assets/Walking/Timeline 1_0026.png" id="29_gexh4"]
+[ext_resource type="Texture2D" uid="uid://dwdpkt7xd1fh8" path="res://Assets/Walking/Timeline 1_0029.png" id="32_qoc3t"]
+[ext_resource type="Texture2D" uid="uid://cvja73sn1dyui" path="res://Assets/Walking/Timeline 1_0032.png" id="35_3hxma"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm335"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dmswx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m28f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rnuqh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_m3ayp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rnuqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_tdf2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_00h63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_qruva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_gexh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qoc3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3hxma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e8dqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ml02p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f1r6a")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryv6v"]
+radius = 37.355663
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(127, 249)
+script = ExtResource("1_gsrwd")
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(75, 77)
+texture = ExtResource("1_turhf")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.9999924, -64)
+scale = Vector2(2.9218748, 2.9218748)
+sprite_frames = SubResource("SpriteFrames_pm335")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.7377507
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(1.7112279, 13.347595)
+shape = SubResource("CircleShape2D_ryv6v")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -22.58824
+offset_top = -21.219254
+offset_right = 30.34482
+offset_bottom = 21.241379
+
+[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="gui_input" from="Sprite2D/Button" to="." method="_on_button_gui_input"]
+[connection signal="mouse_entered" from="Sprite2D/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D/Button" to="." method="_on_button_mouse_exited"]

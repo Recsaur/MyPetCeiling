@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://gypfmg2j7lph"]
+
+[ext_resource type="Script" uid="uid://bhsyhxftssum0" path="res://character_body_2d.gd" id="1_r0ceu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x16p"]
+size = Vector2(128, 128)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_r0ceu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4x16p")
+
+[node name="Camera2D" type="Camera2D" parent="."]

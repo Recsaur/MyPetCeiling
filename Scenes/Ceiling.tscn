@@ -104,6 +104,7 @@ offset_left = -22.58824
 offset_top = -21.219254
 offset_right = 30.34482
 offset_bottom = 21.241379
+mouse_default_cursor_shape = 2
 
 [connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
 [connection signal="gui_input" from="Sprite2D/Button" to="." method="_on_button_gui_input"]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://0arhlwe5sgov"]
+
+[ext_resource type="Script" uid="uid://bubd4ca4hnf08" path="res://Scenes/stats.gd" id="1_kgfbh"]
+[ext_resource type="LabelSettings" uid="uid://c0vkh7gfo4va5" path="res://Assets/StatsFont.tres" id="1_vnsho"]
+[ext_resource type="Texture2D" uid="uid://ca5ntlufc2xmo" path="res://icon.svg" id="2_kgfbh"]
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgfbh")
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 134.0
+offset_bottom = 16.0
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 88.0
+offset_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 16.0
+
+[node name="Happiness" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 41.0
+offset_bottom = 41.0
+
+[node name="Happiness" type="Label" parent="Happiness"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 263.36847
+offset_bottom = 126.0
+scale = Vector2(0.125, 0.125)
+text = "100%"
+label_settings = ExtResource("1_vnsho")
+horizontal_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Happiness"]
+position = Vector2(6, 7)
+scale = Vector2(0.066726886, 0.066726886)
+texture = ExtResource("2_kgfbh")
+
+[node name="Tiredness" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 46.0
+offset_top = -13.0
+offset_right = 86.0
+offset_bottom = 27.0
+
+[node name="Tiredness" type="Label" parent="Tiredness"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 223.0
+offset_bottom = 140.0
+scale = Vector2(0.125, 0.125)
+text = "100%"
+label_settings = ExtResource("1_vnsho")
+horizontal_alignment = 1
+
+[node name="Icon2" type="Sprite2D" parent="Tiredness"]
+position = Vector2(7, 21)
+scale = Vector2(0.067, 0.067)
+texture = ExtResource("2_kgfbh")
+
+[node name="Hunger" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 93.0
+offset_top = 1.0
+offset_right = 133.0
+offset_bottom = 41.0
+
+[node name="Hunger" type="Label" parent="Hunger"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 222.0
+offset_bottom = 126.0
+scale = Vector2(0.125, 0.125)
+text = "100%"
+label_settings = ExtResource("1_vnsho")
+horizontal_alignment = 1
+
+[node name="Icon3" type="Sprite2D" parent="Hunger"]
+position = Vector2(6, 7.0000005)
+scale = Vector2(0.067, 0.067)
+texture = ExtResource("2_kgfbh")

@@ -15,6 +15,10 @@ run/main_scene="uid://cy5j6xta36750"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CeilingStats="*res://Scripts/CeilingStats.gd"
+
 [display]
 
 window/size/viewport_width=250
@@ -24,6 +28,7 @@ window/size/always_on_top=true
 window/size/transparent=true
 window/size/minimize_disabled=true
 window/size/maximize_disabled=true
+window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]

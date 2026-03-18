@@ -8,6 +8,7 @@ var direction = Vector2(1,0)
 #Ceiling States (Ceilates... idk vro socrates)
 var Idle = false
 var Falling = false
+var RClicked = false
 
 var dragging = false
 var drag_offset = Vector2i.ZERO
@@ -69,19 +70,25 @@ func _on_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			#$Squeak.pitch_scale = rng.randf_range(0.9,1.15)
-			$Squeak.play()
+			if not RClicked:
+				var tween = create_tween()
+				tween.tween_property($".","scale",Vector2(1.2,0.75),0.075)
+				tween.tween_property($".","scale",Vector2(1,1),0.075)
+				$Squeak.play()
 			dragging = true
 			drag_offset = DisplayServer.mouse_get_position() - get_window().position
-			var tween = create_tween()
-			tween.tween_property($".","scale",Vector2(1.2,0.75),0.075)
-			tween.tween_property($".","scale",Vector2(1,1),0.075)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if Idle == false:
 				Idle = true
+				RClicked = true
 				$Sprite2D.play("Idle")
+				$Stats.hide()
+				$ChoiceWheel.show()
 			else:
+				RClicked = false
 				dragging = false
 				Idle = false
+				$ChoiceWheel.hide()
 				$Sprite2D.play("Walk")
 	if event.is_action_released("Hold"):
 		dragging = false
@@ -89,8 +96,9 @@ func _on_button_gui_input(event: InputEvent) -> void:
 
 func _on_button_mouse_entered() -> void:
 	var tween = create_tween()
-	Stats.show()
-	tween.tween_property($Sprite2D,"modulate",Color(1.218, 1.218, 1.218, 1.0),0.1)
+	if not RClicked:
+		Stats.show()
+		tween.tween_property($Sprite2D,"modulate",Color(1.218, 1.218, 1.218, 1.0),0.1)
 
 
 func _on_button_mouse_exited() -> void:

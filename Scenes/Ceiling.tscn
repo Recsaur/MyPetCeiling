@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cy5j6xta36750"]
+[gd_scene load_steps=22 format=3 uid="uid://cy5j6xta36750"]
 
 [ext_resource type="Script" uid="uid://d2tkc7wt0qjrg" path="res://Scenes/ceiling.gd" id="1_gsrwd"]
 [ext_resource type="Texture2D" uid="uid://ca5ntlufc2xmo" path="res://icon.svg" id="1_turhf"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://0arhlwe5sgov" path="res://Scenes/Stats.tscn" id="16_wmq7d"]
 [ext_resource type="Texture2D" uid="uid://8gx2833ebopt" path="res://Assets/Walking/Timeline 1_0014.png" id="17_rnuqh"]
 [ext_resource type="PackedScene" uid="uid://c3y2wvf5mnjbt" path="res://Scenes/FeaturesWindow.tscn" id="18_hkt3k"]
+[ext_resource type="PackedScene" uid="uid://je4rlun5vt11" path="res://Scenes/ChoiceWheel.tscn" id="19_jg4t5"]
 [ext_resource type="Texture2D" uid="uid://c3twty6fddmvv" path="res://Assets/Walking/Timeline 1_0017.png" id="20_tdf2h"]
 [ext_resource type="Texture2D" uid="uid://xns5ogt2hyw7" path="res://Assets/Walking/Timeline 1_0020.png" id="23_00h63"]
 [ext_resource type="Texture2D" uid="uid://ngkl7hgrghaf" path="res://Assets/Walking/Timeline 1_0023.png" id="26_qruva"]
@@ -87,7 +88,7 @@ position = Vector2(75, 77)
 texture = ExtResource("1_turhf")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.9999924, -64)
+position = Vector2(-3, -64)
 scale = Vector2(2.9218748, 2.9218748)
 sprite_frames = SubResource("SpriteFrames_pm335")
 animation = &"Walk"
@@ -114,6 +115,7 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("16_3ip04")
 
 [node name="Stats" parent="." instance=ExtResource("16_wmq7d")]
+visible = false
 offset_left = -113.0
 offset_top = -147.0
 offset_right = -113.0
@@ -122,8 +124,14 @@ scale = Vector2(1.75, 1.75)
 
 [node name="Window" parent="." instance=ExtResource("18_hkt3k")]
 position = Vector2i(75, 75)
+
+[node name="ChoiceWheel" parent="." instance=ExtResource("19_jg4t5")]
 visible = false
-force_native = false
+offset_left = -176.0
+offset_top = -254.0
+offset_right = -176.0
+offset_bottom = -254.0
+scale = Vector2(0.75, 0.75)
 
 [connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
 [connection signal="gui_input" from="Sprite2D/Button" to="." method="_on_button_gui_input"]

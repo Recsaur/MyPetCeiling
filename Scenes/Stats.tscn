@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://0arhlwe5sgov"]
+[gd_scene load_steps=6 format=3 uid="uid://0arhlwe5sgov"]
 
 [ext_resource type="Script" uid="uid://bubd4ca4hnf08" path="res://Scenes/stats.gd" id="1_kgfbh"]
 [ext_resource type="LabelSettings" uid="uid://c0vkh7gfo4va5" path="res://Assets/StatsFont.tres" id="1_vnsho"]
 [ext_resource type="Texture2D" uid="uid://ca5ntlufc2xmo" path="res://icon.svg" id="2_kgfbh"]
+[ext_resource type="FontFile" uid="uid://b0lkeb86ms5x8" path="res://Assets/Born2bSportyV2.ttf" id="4_lkg3v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bag5e"]
+font = ExtResource("4_lkg3v")
 
 [node name="Stats" type="Control"]
 layout_mode = 3
@@ -96,3 +100,20 @@ horizontal_alignment = 1
 position = Vector2(6, 7.0000005)
 scale = Vector2(0.067, 0.067)
 texture = ExtResource("2_kgfbh")
+
+[node name="Name" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -16.000002
+offset_top = -36.0
+offset_right = 110.0
+offset_bottom = -11.0
+scale = Vector2(1.2832882, 1.2832882)
+
+[node name="Label" type="Label" parent="Name"]
+layout_mode = 0
+offset_right = 79.42473
+offset_bottom = 16.0
+scale = Vector2(1.5864077, 1.5864077)
+text = "Ceiling"
+label_settings = SubResource("LabelSettings_bag5e")
+horizontal_alignment = 1

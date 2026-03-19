@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		tween.tween_property($".","scale",Vector2(1,1),0.075)
 	if dragging:
 		window.position = DisplayServer.mouse_get_position() - drag_offset
-	if $Sprite2D.frame == 6 and Idle == false:
+	if $Sprite2D.frame == 6 and not Idle and not Falling:
 		#print($Sprite2D.frame)
 		window.position += move_vector
 	#print(window.position)
@@ -64,7 +64,6 @@ func _process(delta: float) -> void:
 	#tween.tween_property($".","scale",Vector2(1.2,0.75),0.075)
 	#tween.tween_property($".","scale",Vector2(1,1),0.075)
 	##tween.tween_property($".","position",Vector2($".".position.x,$".".position.y+25),0.1)
-	#pass # Replace with function body.
 
 func _on_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -79,21 +78,41 @@ func _on_button_gui_input(event: InputEvent) -> void:
 			drag_offset = DisplayServer.mouse_get_position() - get_window().position
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if Idle == false:
-				Idle = true
-				RClicked = true
-				$Sprite2D.play("Idle")
-				$Stats.hide()
-				$ChoiceWheel.show()
+				RightClickIdle()
 			else:
-				RClicked = false
-				dragging = false
+				RightClickBack()
+		elif event.button_index == MOUSE_BUTTON_MIDDLE and RClicked == false:
+			if Idle:
 				Idle = false
-				$ChoiceWheel.hide()
 				$Sprite2D.play("Walk")
+			else:
+				Idle = true
+				$Sprite2D.play("Idle")
 	if event.is_action_released("Hold"):
 		dragging = false
 
 
+func RightClickIdle():
+	var tween = create_tween()
+	
+	Idle = true
+	RClicked = true
+	$Sprite2D.play("Idle")
+	tween.tween_property($Stats,"modulate",Color(0.0, 0.0, 0.0, 0.0),0.25)
+	await tween.finished
+	print("Hid Stats")
+	$Stats.hide()
+	$ChoiceWheel.show()
+	
+func RightClickBack():
+	var tween = create_tween()
+	RClicked = false
+	dragging = false
+	Idle = false
+	tween.tween_property($Stats,"modulate",Color(1.0, 1.0, 1.0, 1.0),0.25)
+	$ChoiceWheel.hide()
+	$Sprite2D.play("Walk")
+	
 func _on_button_mouse_entered() -> void:
 	var tween = create_tween()
 	if not RClicked:

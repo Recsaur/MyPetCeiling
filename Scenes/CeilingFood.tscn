@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3y2wvf5mnjbt"]
+
+[ext_resource type="Texture2D" uid="uid://ca5ntlufc2xmo" path="res://icon.svg" id="1_m3uxi"]
+
+[node name="Food" type="Window"]
+oversampling_override = 1.0
+title = "Features"
+initial_position = 4
+always_on_top = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(48.000008, 52)
+scale = Vector2(0.5164454, 0.5164454)
+texture = ExtResource("1_m3uxi")
+
+[node name="Camera2D" type="Camera2D" parent="."]

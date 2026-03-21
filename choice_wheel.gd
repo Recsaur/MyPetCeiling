@@ -2,6 +2,11 @@ extends Control
 
 @onready var Ceiling = $".."
 
+var Button1 = false
+var Button2 = false
+var Button4 = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -73,8 +78,21 @@ func _on_button_4_mouse_exited() -> void:
 #Button pressing thing actions for button
 
 func _on_button_2_pressed() -> void:
-	var EndSpot = $curve3.position
-	PickedOption($curve2, EndSpot)
+	if Button2:
+		Button2 = false
+		$ToolsSubOptions.hide()
+	else:
+		Button2 = true
+		$ToolsSubOptions.show()
 
 func _on_button_3_pressed() -> void:
 	Ceiling.RightClickBack()
+
+
+func _on_button_pressed() -> void:
+	if Button1:
+		Button1 = false
+		$ActionsOptions.hide()
+	else:
+		Button1 = true
+		$ActionsOptions.show()

@@ -17,6 +17,7 @@ var  rng = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	get_viewport().gui_embed_subwindows = false
 	var window = get_window()
 	var usable_rect = DisplayServer.screen_get_usable_rect()
 	var target_y = usable_rect.end.y - window.size.y
@@ -33,7 +34,7 @@ func _process(delta: float) -> void:
 	#Stats.position = DisplayServer.mouse_get_position() - drag_offset
 	
 	
-	$Window.position = window.position
+	#$Window.position = window.position >this made sub window not move idk why
 	if window.position.y != target_y and not dragging:
 		Falling = true
 		window.position.y += 5

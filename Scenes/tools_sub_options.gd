@@ -51,3 +51,7 @@ func _on_todo_mouse_exited() -> void:
 func _on_calc_mouse_exited() -> void:
 	var EndSpot = Vector2(1,1)
 	OptionAnimOut($Calc,EndSpot)
+
+
+func _on_notepad_pressed() -> void:
+	$"../../ToDoList".show()

@@ -37,9 +37,14 @@ func _process(delta: float) -> void:
 	#$Window.position = window.position >this made sub window not move idk why
 	if window.position.y != target_y and not dragging:
 		Falling = true
+		$Sprite2D.play("Fall")
 		window.position.y += 5
 	else:
 		Falling = false
+		if Idle:
+			$Sprite2D.play("Idle")
+		else:
+			$Sprite2D.play("Walk")
 	print(Falling)
 	if window.position.y > target_y and not dragging:
 		var tween = create_tween()

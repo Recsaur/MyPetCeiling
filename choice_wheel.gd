@@ -1,7 +1,8 @@
 extends Control
 
 @onready var Ceiling = $".."
-
+@onready var Click = $Click
+@onready var Pop = $Pop
 var Button1 = false
 var Button2 = false
 var Button4 = false
@@ -75,7 +76,6 @@ func _on_button_4_mouse_exited() -> void:
 
 
 
-#Button pressing thing actions for button
 
 func _on_button_2_pressed() -> void:
 	if Button2:
@@ -84,9 +84,11 @@ func _on_button_2_pressed() -> void:
 	else:
 		Button2 = true
 		$ToolsSubOptions.show()
+	Click.play()
 
 func _on_button_3_pressed() -> void:
 	Ceiling.RightClickBack()
+	Pop.play()
 
 
 func _on_button_pressed() -> void:
@@ -96,3 +98,8 @@ func _on_button_pressed() -> void:
 	else:
 		Button1 = true
 		$ActionsOptions.show()
+	Click.play()
+
+
+func _on_button_4_pressed() -> void:
+	Pop.play()

@@ -11,6 +11,13 @@ func _ready() -> void:
 	else:
 		$Control/TextEdit.text = ""
 
+func Reopen():
+	if FileAccess.file_exists(FilePath):
+		var FileMade  = FileAccess.open(FilePath,FileAccess.READ)
+		$Control/TextEdit.text = FileMade.get_as_text()
+		FileMade.close()
+	else:
+		$Control/TextEdit.text = ""
 
 func _process(delta: float) -> void:
 	pass
@@ -36,6 +43,12 @@ func _on_save_pressed() -> void:
 	FileNote.close()
 	title = "Notes"
 	print("Made the text")
+	ChangedNoSave = false
+	$Unsaved.hide()
+	hide()
+
+
+func _on_no_save_pressed() -> void:
 	ChangedNoSave = false
 	$Unsaved.hide()
 	hide()

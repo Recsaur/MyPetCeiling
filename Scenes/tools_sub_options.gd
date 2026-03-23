@@ -1,5 +1,5 @@
 extends Control
-
+@onready var HoverLabel = $"../Label"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,16 +25,19 @@ func OptionAnimOut(Option,EndSpot: Vector2):
 
 func _on_notepad_mouse_entered() -> void:
 	var EndSpot = Vector2(1.25,1.25)
+	HoverLabel.text = str("Notepad")
 	OptionAnim($Notepad,EndSpot)
 
 
 func _on_todo_mouse_entered() -> void:
 	var EndSpot = Vector2(1.25,1.25)
+	HoverLabel.text = str("To Do List")
 	OptionAnim($Todo,EndSpot)
 
 
 func _on_calc_mouse_entered() -> void:
 	var EndSpot = Vector2(1.25,1.25)
+	HoverLabel.text = str("Calc")
 	OptionAnim($Calc,EndSpot)
 
 #Exiting the anim
@@ -54,4 +57,5 @@ func _on_calc_mouse_exited() -> void:
 
 
 func _on_notepad_pressed() -> void:
+	$"../../ToDoList".Reopen()
 	$"../../ToDoList".show()

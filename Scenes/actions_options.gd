@@ -51,7 +51,7 @@ func _on_feed_mouse_entered() -> void:
 
 func _on_roam_mouse_entered() -> void:
 	var EndSpot = Vector2(1.25,1.25)
-	HoverLabel.text = str("Roam")
+	HoverLabel.text = str("Sit")
 	OptionAnim($Roam,EndSpot)
 
 

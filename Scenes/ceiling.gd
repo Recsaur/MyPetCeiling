@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 			$Sprite2D.play("Idle")
 		else:
 			$Sprite2D.play("Walk")
-	print(Falling)
+	#print(Falling)
 	if window.position.y > target_y and not dragging:
 		var tween = create_tween()
 		window.position.y = target_y
@@ -106,7 +106,7 @@ func RightClickIdle():
 	$Sprite2D.play("Idle")
 	tween.tween_property($Stats,"modulate",Color(0.0, 0.0, 0.0, 0.0),0.25)
 	await tween.finished
-	print("Hid Stats")
+	#print("Hid Stats")
 	$Stats.hide()
 	$ChoiceWheel.show()
 	

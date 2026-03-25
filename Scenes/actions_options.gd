@@ -83,5 +83,6 @@ func _on_sit_pressed() -> void:
 
 func _on_roam_pressed() -> void:
 	Ceiling.Idle = true
+	Ceiling.RClicked = false
 	$"../../Sprite2D".play("Idle")
 	$"..".hide()
